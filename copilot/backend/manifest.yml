@@ -1,0 +1,34 @@
+# copilot/backend/manifest.yml
+
+name: backend
+type: Load Balanced Web Service
+
+image:
+  build: sample-services/backend/Dockerfile
+  port: 5000
+
+platform: linux/amd64
+
+cpu: 256
+memory: 512
+count: 2
+
+http:
+  path: '/api'
+  port: 5000
+  healthcheck:
+    path: '/api/ping'
+    port: 5000
+    success_codes: '200'
+    healthy_threshold: 3
+    unhealthy_threshold: 2
+    interval: 15s
+    timeout: 10s
+    grace_period: 10s
+  deregistration_delay: 5s
+  stickiness: false
+
+variables:
+
+# Add any other necessary configuration here
+

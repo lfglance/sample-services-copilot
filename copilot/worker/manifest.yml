@@ -1,0 +1,19 @@
+# copilot/worker/manifest.yml
+
+name: worker
+type: Worker Service
+
+image:
+  build: sample-services/worker/Dockerfile
+
+platform: linux/amd64
+
+cpu: 256
+memory: 512
+count: 1
+
+variables:
+  URL: "http://backend.${COPILOT_ENVIRONMENT_NAME}.ecs-sample.local:5000/api/generate"
+
+# Add any other necessary configuration here
+

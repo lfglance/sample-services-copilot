@@ -1,0 +1,3 @@
+[submodule "sample-services"]
+	path = sample-services
+	url = https://github.com/lfglance/sample-services

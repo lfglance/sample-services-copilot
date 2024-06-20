@@ -1,0 +1,34 @@
+# copilot/frontend/manifest.yml
+
+name: frontend
+type: Load Balanced Web Service
+
+image:
+  build: 
+    context: sample-services/frontend
+    dockerfile: sample-services/frontend/Dockerfile
+    args:
+      BACKEND_URL: "http://ecs-sa-Publi-S31YaoCGZe0Y-954866293.us-west-2.elb.amazonaws.com/api/generate"
+  port: 3000
+
+
+platform: linux/amd64
+
+cpu: 256
+memory: 512
+count: 2
+
+http:
+  path: '/'
+  port: 3000
+  healthcheck:
+    path: '/'
+    port: 3000
+    success_codes: '200,301'
+    healthy_threshold: 3
+    unhealthy_threshold: 2
+    interval: 15s
+    timeout: 10s
+    grace_period: 10s
+  deregistration_delay: 5s
+  stickiness: false
