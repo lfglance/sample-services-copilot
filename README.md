@@ -4,6 +4,11 @@ Proof of concept for deploying [sample-services](https://github.com/lfglance/sam
 
 `sample-services` need to be cloned as a submodule in this repo.
 
+```
+git submodule init
+git submodule update
+```
+
 All of the manifests for copilot are located in [copilot](./copilot/)
 
 ## Prerequisites
